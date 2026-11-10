@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sehat Farma | Production Intelligence</title>
+<style>
+:root{
+  --ink:#142b2b;--muted:#71817d;--paper:#f4f6f1;--card:#fff;
+  --green:#0d7564;--lime:#c9ed75;--orange:#ef9b55;--red:#d95f55;
+  --line:#e5ebe4;--nav:#102625;--shadow:0 12px 30px rgba(24,48,43,.06)
+}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:14px/1.45 Inter,Segoe UI,Arial,sans-serif}
+.shell{display:grid;grid-template-columns:235px 1fr;min-height:100vh}
+aside{background:var(--nav);color:#e8f0e9;padding:27px 18px;display:flex;flex-direction:column}
+.brand{display:flex;gap:11px;align-items:center;padding:0 10px 35px}
+.logo{width:38px;height:38px;border-radius:13px;background:var(--lime);color:var(--nav);display:grid;place-items:center;font-size:21px;font-weight:900}
+.brand b{display:block;font-size:15px;letter-spacing:.3px}.brand small{color:#9fb4ac;font-size:10px;letter-spacing:1.4px}
+.nav-label{color:#78938a;font-size:10px;letter-spacing:1.7px;padding:0 12px;margin:12px 0}
+nav a{display:flex;align-items:center;gap:12px;padding:12px;border-radius:11px;color:#b9cbc3;text-decoration:none;margin:4px 0;font-size:13px}
+nav a.active{background:#23443e;color:#fff;border-left:3px solid var(--lime);padding-left:9px}
+nav a span{font-size:17px;width:20px;text-align:center}
+.side-note{margin-top:auto;background:#1b3933;border:1px solid #31544a;padding:15px;border-radius:14px;color:#c7d9d0;font-size:11px}
+.side-note b{color:var(--lime);display:block;margin-bottom:5px;font-size:12px}
+main{padding:30px 34px 40px;max-width:1600px;width:100%;margin:auto}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;gap:20px}
+.eyebrow{color:var(--green);font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase}
+h1{font-size:27px;line-height:1.2;margin:6px 0 5px;letter-spacing:-.8px}
+.sub{color:var(--muted);font-size:12px}
+.top-right{display:flex;gap:10px;align-items:center}
+.pill{border:1px solid var(--line);background:#fff;border-radius:10px;padding:10px 13px;color:#425550;font-size:12px}
+.live{display:flex;align-items:center;gap:7px}.dot{width:7px;height:7px;background:#48ad7c;border-radius:50%;box-shadow:0 0 0 4px #e0f3e8}
+.banner{background:var(--green);color:#fff;border-radius:17px;padding:19px 22px;display:flex;justify-content:space-between;align-items:center;margin-bottom:19px;overflow:hidden;position:relative}
+.banner:after{content:"";position:absolute;width:190px;height:190px;border:1px solid #ffffff26;border-radius:50%;right:110px;top:-110px;box-shadow:0 0 0 25px #ffffff0c,0 0 0 50px #ffffff08}
+.banner strong{font-size:15px}.banner p{margin:4px 0 0;color:#d3e9df;font-size:11px}
+.banner .tag{background:#ffffff20;border:1px solid #ffffff30;padding:7px 11px;border-radius:9px;font-size:11px;white-space:nowrap;z-index:1}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:17px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}
+.kpi{padding:17px 18px;position:relative;overflow:hidden}
+.kpi-top{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:11px}
+.kpi-icon{width:30px;height:30px;border-radius:10px;background:#edf5ed;display:grid;place-items:center;font-size:15px}
+.value{font-size:27px;font-weight:800;letter-spacing:-1px;margin:13px 0 3px}
+.kpi-foot{font-size:10px;color:var(--muted)}.positive{color:var(--green);font-weight:700}.warning{color:#c47a32;font-weight:700}
+.content{display:grid;grid-template-columns:1.35fr 1fr;gap:15px;margin-bottom:15px}
+.panel{padding:19px 20px}.panel-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:17px}
+.panel h2{font-size:14px;margin:0 0 3px}.panel .hint{font-size:10px;color:var(--muted)}
+.legend{display:flex;gap:13px;color:var(--muted);font-size:10px}.legend i{display:inline-block;width:8px;height:8px;border-radius:3px;margin-right:5px}
+.chart{width:100%;height:190px;display:block}
+.chart text{font-family:inherit;fill:#82918b;font-size:10px}
+.chart .gridline{stroke:#e8eee8;stroke-dasharray:3 4}
+.quality-wrap{display:flex;align-items:center;gap:25px;padding:7px 0 4px}
+.donut{width:145px;height:145px;flex:none;position:relative}
+.donut svg{transform:rotate(-90deg);width:100%;height:100%}
+.donut .center{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column}
+.center b{font-size:23px}.center small{font-size:10px;color:var(--muted)}
+.quality-legend{flex:1}.qrow{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line);font-size:11px}.qrow:last-child{border:0}.qname{display:flex;gap:8px;align-items:center;color:#52645e}.swatch{width:8px;height:8px;border-radius:3px}
+.bottom{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:15px}
+.mini{padding:18px 19px}.mini h2{font-size:13px;margin:0 0 4px}.mini p{font-size:10px;color:var(--muted);margin:0 0 15px}
+.stock-row{margin:13px 0}.stock-title{display:flex;justify-content:space-between;font-size:10px;margin-bottom:6px;color:#52645e}
+.track{height:7px;background:#edf1eb;border-radius:10px;overflow:hidden}.fill{height:100%;border-radius:10px;background:var(--green)}.fill.orange{background:var(--orange)}.fill.red{background:var(--red)}
+.alert{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);align-items:flex-start}
+.alert:last-child{border:0}.alert-icon{width:27px;height:27px;border-radius:9px;background:#fff2e7;display:grid;place-items:center}
+.alert b{display:block;font-size:10px}.alert small{color:var(--muted);font-size:9px}
+.delay-number{font-size:30px;font-weight:800;margin:8px 0 2px}.delay-number span{font-size:12px;color:var(--muted);font-weight:500}
+.delay-bar{height:8px;background:#edf1eb;border-radius:10px;margin:14px 0 9px;overflow:hidden}.delay-bar div{height:100%;width:60%;background:var(--orange);border-radius:10px}
+.footer{display:flex;justify-content:space-between;color:#89958f;font-size:9px;margin-top:19px;padding:0 3px}
+select{border:0;background:transparent;color:inherit;font:inherit;outline:0}
+@media(max-width:1050px){.shell{grid-template-columns:190px 1fr}main{padding:25px 20px}.kpis{grid-template-columns:repeat(2,1fr)}.bottom{grid-template-columns:1fr 1fr}.bottom .mini:last-child{grid-column:span 2}}
+@media(max-width:700px){.shell{display:block}aside{padding:14px 16px}.brand{padding:0 5px 10px}.nav-label,.side-note{display:none}nav{display:flex;overflow:auto}nav a{white-space:nowrap;padding:9px}.top{align-items:flex-start;flex-direction:column}.top-right{width:100%}.content,.bottom{grid-template-columns:1fr}.bottom .mini:last-child{grid-column:auto}main{padding:20px 14px}.banner{align-items:flex-start;gap:12px;flex-direction:column}.quality-wrap{gap:12px}.donut{width:120px;height:120px}}
+.page{display:none}.page.active{display:block;animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.more{display:inline-block;margin-top:12px;color:var(--green);font-weight:700;font-size:11px;text-decoration:none}.more:hover{text-decoration:underline}
+nav a:hover{background:#1b3933;color:#fff}
+.content{align-items:start}
+</style>
+</head>
+<body>
+<div class="shell">
+<aside>
+  <div class="brand"><div class="logo">+</div><div><b>SEHAT FARMA</b><small>INTELLIGENCE HUB</small></div></div>
+  <div class="nav-label">WORKSPACE</div>
+  <nav>
+    <a class="active" href="#overview"><span>▦</span> Overview</a>
+    <a href="#production"><span>◷</span> Production</a>
+    <a href="#quality"><span>◇</span> Quality Control</a>
+    <a href="#inventory"><span>▤</span> Inventory</a>
+    <a href="#alerts"><span>⚑</span> Alerts & Expiry</a>
+  </nav>
+  <div class="side-note"><b>BI INSIGHT</b>Gunakan data produksi, QC, dan persediaan yang terintegrasi untuk mendukung keputusan operasional.</div>
+</aside>
+<main>
+  <div class="top">
+    <div><div class="eyebrow" id="peyebrow">Operations / Business Intelligence</div><h1 id="ptitle">Production Overview</h1><div class="sub" id="psub">Ringkasan performa produksi dan kualitas — PT Sehat Farma Indonesia</div></div>
+    <div class="top-right"><div class="pill">Periode: <select id="period"><option>Data simulasi bulanan</option><option>Januari 2026</option><option>Februari 2026</option></select></div><div class="pill live"><span class="dot"></span> Monitoring view</div></div>
+  </div>
+  <div class="page active" id="page-overview"><section class="banner"><div><strong>Operational Snapshot</strong><p>Fokus utama: mengejar target produksi, menekan produk gagal QC, dan mengendalikan masa simpan bahan baku.</p></div><div class="tag">● SIMULATED DATA</div></section>
+  <section class="kpis">
+    <div class="card kpi"><div class="kpi-top">Target Produksi <span class="kpi-icon">◎</span></div><div class="value">100.000</div><div class="kpi-foot">Unit per bulan</div></div>
+    <div class="card kpi"><div class="kpi-top">Produksi Aktual <span class="kpi-icon">▥</span></div><div class="value">90.000</div><div class="kpi-foot"><span class="positive">90% tercapai</span> · selisih 10.000 unit</div></div>
+    <div class="card kpi"><div class="kpi-top">Produk Gagal QC <span class="kpi-icon">◇</span></div><div class="value">4.500</div><div class="kpi-foot"><span class="warning">Perlu evaluasi</span> · unit tidak lolos</div></div>
+    <div class="card kpi"><div class="kpi-top">Bahan Baku Kedaluwarsa <span class="kpi-icon">⌛</span></div><div class="value">2.000</div><div class="kpi-foot"><span class="warning">Perlu pengendalian</span> · unit bahan baku</div></div>
+  </section>
+  <section class="bottom" style="margin-top:0">
+  <div class="card mini"><h2>Produksi</h2><p>Target vs realisasi</p><div class="delay-number">90% <span>tercapai</span></div><div class="hint">Gap 10.000 unit · keterlambatan 6 hari</div><a class="more" href="#production">Lihat detail →</a></div>
+  <div class="card mini"><h2>Quality Control</h2><p>Produk tidak lolos pemeriksaan</p><div class="delay-number">4.500 <span>unit gagal QC</span></div><div class="hint">Perlu evaluasi proses & standar mutu</div><a class="more" href="#quality">Lihat detail →</a></div>
+  <div class="card mini"><h2>Bahan Baku</h2><p>Status kedaluwarsa</p><div class="delay-number">2.000 <span>unit kedaluwarsa</span></div><div class="hint">Perlu pengendalian masa simpan</div><a class="more" href="#inventory">Lihat detail →</a></div>
+</section></div>
+  <div class="page" id="page-production"><section class="content"><div class="card panel">
+      <div class="panel-head"><div><h2>Production Achievement</h2><div class="hint">Perbandingan target dan realisasi produksi (unit)</div></div><div class="legend"><span><i style="background:#c9ed75"></i>Target</span><span><i style="background:#0d7564"></i>Aktual</span></div></div>
+      <svg class="chart" viewBox="0 0 600 210" role="img" aria-label="Grafik target dan aktual produksi">
+        <line class="gridline" x1="55" y1="25" x2="575" y2="25"/><line class="gridline" x1="55" y1="70" x2="575" y2="70"/><line class="gridline" x1="55" y1="115" x2="575" y2="115"/><line class="gridline" x1="55" y1="160" x2="575" y2="160"/>
+        <text x="5" y="29">100k</text><text x="14" y="74">75k</text><text x="14" y="119">50k</text><text x="14" y="164">25k</text>
+        <rect x="110" y="25" width="75" height="135" rx="7" fill="#c9ed75"/><rect x="195" y="38.5" width="75" height="121.5" rx="7" fill="#0d7564"/>
+        <text x="147" y="181" text-anchor="middle">Target</text><text x="232" y="181" text-anchor="middle">Aktual</text>
+        <text x="147" y="15" text-anchor="middle" fill="#71817d">100.000</text><text x="232" y="29" text-anchor="middle" fill="#0d7564">90.000</text>
+        <rect x="330" y="48" width="220" height="93" rx="12" fill="#f4f7f1"/>
+        <text x="350" y="72" fill="#71817d">GAP PRODUKSI</text><text x="350" y="103" style="font-size:25px;fill:#142b2b;font-weight:800">10.000</text><text x="350" y="123">unit di bawah target</text>
+      </svg>
+      <div class="hint">Catatan: data yang tersedia hanya satu periode simulasi, sehingga grafik ini menampilkan target vs aktual, bukan tren bulanan.</div>
+    </div>
+    <div class="card mini"><h2>Production Delay</h2><p>Indikator keterlambatan proses produksi</p>
+      <div class="delay-number">6 <span>hari keterlambatan</span></div>
+      <div class="delay-bar"><div></div></div>
+      <div class="stock-title"><span>Status</span><b class="warning">Perlu tindakan</b></div>
+      <div class="hint" style="margin-top:13px">Telusuri tahapan produksi yang mengalami hambatan, ketersediaan bahan baku, dan hasil pemeriksaan QC.</div>
+    </div>
+  </section></div>
+  <div class="page" id="page-quality"><section class="content"><div class="card panel">
+      <div class="panel-head"><div><h2>Quality Control Summary</h2><div class="hint">Komposisi hasil QC dari produksi aktual*</div></div><span class="pill">QC</span></div>
+      <div class="quality-wrap">
+        <div class="donut"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="47" fill="none" stroke="#eaf0e9" stroke-width="14"/><circle cx="60" cy="60" r="47" fill="none" stroke="#0d7564" stroke-width="14" stroke-dasharray="278 296"/><circle cx="60" cy="60" r="47" fill="none" stroke="#ef9b55" stroke-width="14" stroke-dasharray="18 296" stroke-dashoffset="-278"/></svg><div class="center"><b>95%</b><small>Lolos QC*</small></div></div>
+        <div class="quality-legend"><div class="qrow"><span class="qname"><i class="swatch" style="background:#0d7564"></i>Lolos QC*</span><b>85.500</b></div><div class="qrow"><span class="qname"><i class="swatch" style="background:#ef9b55"></i>Gagal QC</span><b>4.500</b></div><div class="qrow"><span class="qname">Total produksi</span><b>90.000</b></div></div>
+      </div>
+      <div class="hint">*Visualisasi mengasumsikan seluruh 90.000 unit telah diperiksa QC. Angka lolos QC merupakan hasil perhitungan ilustratif, bukan data terpisah dari soal.</div>
+    </div>
+  <div class="card mini"><h2>Tindak Lanjut QC</h2><p>Langkah evaluasi yang disarankan</p>
+<div class="alert"><div class="alert-icon">◇</div><div><b>Telusuri penyebab 4.500 unit gagal</b><small>Periksa batch, mesin, dan bahan baku terkait</small></div></div>
+<div class="alert"><div class="alert-icon">↻</div><div><b>Tinjau standar pemeriksaan</b><small>Pastikan prosedur QC konsisten tiap batch</small></div></div></div></section></div>
+  <div class="page" id="page-inventory"><section class="content"><div class="card mini"><h2>Raw Material Control</h2><p>Pemantauan status persediaan bahan baku</p>
+      <div class="stock-row"><div class="stock-title"><span>Stok aman</span><b>Dalam batas</b></div><div class="track"><div class="fill" style="width:78%"></div></div></div>
+      <div class="stock-row"><div class="stock-title"><span>Stok berlebih</span><b>Perlu ditinjau</b></div><div class="track"><div class="fill orange" style="width:48%"></div></div></div>
+      <div class="stock-row"><div class="stock-title"><span>Bahan kedaluwarsa</span><b>2.000 unit</b></div><div class="track"><div class="fill red" style="width:24%"></div></div></div>
+      <div class="hint">Persentase bar hanya ilustrasi tampilan. Data stok total dan batas minimum belum tersedia.</div>
+    </div>
+    <div class="card mini"><h2>Catatan</h2><p>Hal yang perlu diperhatikan gudang</p><div class="hint">Cocokkan stok dengan rencana produksi agar tidak terjadi stok berlebih atau kekurangan.</div></div></section></div>
+  <div class="page" id="page-alerts"><section class="content"><div class="card mini"><h2>Expiry & Inventory Alerts</h2><p>Daftar perhatian untuk tim gudang</p>
+      <div class="alert"><div class="alert-icon">⌛</div><div><b>2.000 unit bahan baku kedaluwarsa</b><small>Evaluasi penyebab dan pencatatan kerugian</small></div></div>
+      <div class="alert"><div class="alert-icon">▤</div><div><b>Risiko stok berlebih / kekurangan</b><small>Tinjau kebutuhan berdasarkan rencana produksi</small></div></div>
+      <div class="alert"><div class="alert-icon">↻</div><div><b>Perlu pemantauan tanggal kedaluwarsa</b><small>Prioritaskan bahan dengan masa simpan terdekat</small></div></div>
+    </div>
+    </section></div>
+  <div class="footer"><span>SEHAT FARMA · BUSINESS INTELLIGENCE DASHBOARD</span><span>Prototype untuk tugas kelompok · Data simulasi</span></div>
+</main>
+</div>
+<script>
+document.getElementById('period').addEventListener('change', function(){
+  const banner=document.querySelector('.banner p');
+  banner.textContent = this.value === 'Data simulasi bulanan'
+    ? 'Fokus utama: mengejar target produksi, menekan produk gagal QC, dan mengendalikan masa simpan bahan baku.'
+    : 'Tampilan periode berubah sebagai contoh filter. Angka pada dashboard tetap menggunakan data simulasi yang tersedia.';
+});
+
+const META={overview:['Production Overview','Ringkasan performa produksi dan kualitas — PT Sehat Farma Indonesia'],
+production:['Production','Target, realisasi, dan keterlambatan produksi'],
+quality:['Quality Control','Hasil pemeriksaan kualitas produk'],
+inventory:['Inventory','Pemantauan persediaan bahan baku'],
+alerts:['Alerts & Expiry','Peringatan kedaluwarsa dan persediaan']};
+function show(p){
+  if(!META[p]) p='overview';
+  document.querySelectorAll('.page').forEach(e=>e.classList.toggle('active',e.id==='page-'+p));
+  document.querySelectorAll('nav a').forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+p));
+  document.getElementById('ptitle').textContent=META[p][0];
+  document.getElementById('psub').textContent=META[p][1];
+  document.getElementById('peyebrow').textContent='Operations / '+META[p][0];
+  document.title='Sehat Farma | '+META[p][0];
+  window.scrollTo(0,0);
+}
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
+  e.preventDefault();const p=a.getAttribute('href').slice(1);show(p);
+  try{history.replaceState(null,'','#'+p)}catch(err){}
+}));
+let start='overview';try{start=location.hash.slice(1)}catch(err){}
+show(start);
+</script>
+</body>
+</html>
