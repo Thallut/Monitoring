@@ -247,6 +247,33 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',
   e.preventDefault();const p=a.getAttribute('href').slice(1);show(p);
   try{history.replaceState(null,'','#'+p)}catch(err){}
 }));
+/* Fallback: browser HP yang dipaksa "Desktop site" (layout ~980px, lalu di-zoom-out).
+   Deteksi layar asli, aktifkan aturan layout HP, lalu perbesar agar pas selebar layar. */
+(function(){
+  var root=document.documentElement;
+  var rules=[];
+  try{
+    Array.prototype.forEach.call(document.styleSheets[0].cssRules,function(r){
+      if(r.type===CSSRule.MEDIA_RULE){
+        var t=r.media.mediaText;
+        rules.push({r:r,orig:t,mobile:/max-width:\s*700px/.test(t),desktop:/min-width:\s*701px/.test(t)});
+      }
+    });
+  }catch(e){return}
+  function apply(){
+    root.style.zoom='';
+    var sw=screen.width, iw=window.innerWidth;
+    var coarse=window.matchMedia&&matchMedia('(pointer:coarse)').matches;
+    var fake=coarse && sw<=600 && iw>sw*1.3;
+    rules.forEach(function(x){
+      x.r.media.mediaText = fake ? (x.mobile?'all':(x.desktop?'not all':x.orig)) : x.orig;
+    });
+    if(fake) root.style.zoom=iw/sw;
+  }
+  apply();
+  window.addEventListener('orientationchange',function(){setTimeout(apply,300)});
+})();
+
 let start='overview';try{start=location.hash.slice(1)}catch(err){}
 show(start);
 </script>
