@@ -2,137 +2,9 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#102625">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sehat Farma | Production Intelligence</title>
-<style>
-:root{
-  --ink:#142b2b;--muted:#71817d;--paper:#f4f6f1;--card:#fff;
-  --green:#0d7564;--lime:#c9ed75;--orange:#ef9b55;--red:#d95f55;
-  --line:#e5ebe4;--nav:#102625;--shadow:0 12px 30px rgba(24,48,43,.06)
-}
-*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:14px/1.45 Inter,Segoe UI,Arial,sans-serif}
-.shell{display:grid;grid-template-columns:235px 1fr;min-height:100vh}
-aside{background:var(--nav);color:#e8f0e9;padding:27px 18px;display:flex;flex-direction:column}
-.brand{display:flex;gap:11px;align-items:center;padding:0 10px 35px}
-.logo{width:38px;height:38px;border-radius:13px;background:var(--lime);color:var(--nav);display:grid;place-items:center;font-size:21px;font-weight:900}
-.brand b{display:block;font-size:15px;letter-spacing:.3px}.brand small{color:#9fb4ac;font-size:10px;letter-spacing:1.4px}
-.nav-label{color:#78938a;font-size:10px;letter-spacing:1.7px;padding:0 12px;margin:12px 0}
-nav a{display:flex;align-items:center;gap:12px;padding:12px;border-radius:11px;color:#b9cbc3;text-decoration:none;margin:4px 0;font-size:13px}
-nav a.active{background:#23443e;color:#fff;border-left:3px solid var(--lime);padding-left:9px}
-nav a .ic{font-size:17px;width:20px;text-align:center;flex:none}
-.side-note{margin-top:auto;background:#1b3933;border:1px solid #31544a;padding:15px;border-radius:14px;color:#c7d9d0;font-size:11px}
-.side-note b{color:var(--lime);display:block;margin-bottom:5px;font-size:12px}
-main{padding:30px 34px 40px;max-width:1600px;width:100%;margin:0 auto;align-self:start}
-.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;gap:20px}
-.eyebrow{color:var(--green);font-size:10px;font-weight:800;letter-spacing:2px;text-transform:uppercase}
-h1{font-size:27px;line-height:1.2;margin:6px 0 5px;letter-spacing:-.8px}
-.sub{color:var(--muted);font-size:12px}
-.top-right{display:flex;gap:10px;align-items:center}
-.pill{border:1px solid var(--line);background:#fff;border-radius:10px;padding:10px 13px;color:#425550;font-size:12px}
-.live{display:flex;align-items:center;gap:7px}.dot{width:7px;height:7px;background:#48ad7c;border-radius:50%;box-shadow:0 0 0 4px #e0f3e8}
-.banner{background:var(--green);color:#fff;border-radius:17px;padding:19px 22px;display:flex;justify-content:space-between;align-items:center;margin-bottom:19px;overflow:hidden;position:relative}
-.banner:after{content:"";position:absolute;width:190px;height:190px;border:1px solid #ffffff26;border-radius:50%;right:110px;top:-110px;box-shadow:0 0 0 25px #ffffff0c,0 0 0 50px #ffffff08}
-.banner strong{font-size:15px}.banner p{margin:4px 0 0;color:#d3e9df;font-size:11px}
-.banner .tag{background:#ffffff20;border:1px solid #ffffff30;padding:7px 11px;border-radius:9px;font-size:11px;white-space:nowrap;z-index:1}
-.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:17px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}
-.kpi{padding:17px 18px;position:relative;overflow:hidden}
-.kpi-top{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:11px}
-.kpi-icon{width:30px;height:30px;border-radius:10px;background:#edf5ed;display:grid;place-items:center;font-size:15px}
-.value{font-size:27px;font-weight:800;letter-spacing:-1px;margin:13px 0 3px}
-.kpi-foot{font-size:10px;color:var(--muted)}.positive{color:var(--green);font-weight:700}.warning{color:#c47a32;font-weight:700}
-.content{display:grid;grid-template-columns:1.35fr 1fr;gap:15px;margin-bottom:15px}
-.panel{padding:19px 20px}.panel-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:17px}
-.panel h2{font-size:14px;margin:0 0 3px}.panel .hint{font-size:10px;color:var(--muted)}
-.legend{display:flex;gap:13px;color:var(--muted);font-size:10px}.legend i{display:inline-block;width:8px;height:8px;border-radius:3px;margin-right:5px}
-.chart{width:100%;height:190px;display:block}
-.chart text{font-family:inherit;fill:#82918b;font-size:10px}
-.chart .gridline{stroke:#e8eee8;stroke-dasharray:3 4}
-.quality-wrap{display:flex;align-items:center;gap:25px;padding:7px 0 4px}
-.donut{width:145px;height:145px;flex:none;position:relative}
-.donut svg{transform:rotate(-90deg);width:100%;height:100%}
-.donut .center{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column}
-.center b{font-size:23px}.center small{font-size:10px;color:var(--muted)}
-.quality-legend{flex:1}.qrow{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line);font-size:11px}.qrow:last-child{border:0}.qname{display:flex;gap:8px;align-items:center;color:#52645e}.swatch{width:8px;height:8px;border-radius:3px}
-.bottom{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:15px}
-.mini{padding:18px 19px}.mini h2{font-size:13px;margin:0 0 4px}.mini p{font-size:10px;color:var(--muted);margin:0 0 15px}
-.stock-row{margin:13px 0}.stock-title{display:flex;justify-content:space-between;font-size:10px;margin-bottom:6px;color:#52645e}
-.track{height:7px;background:#edf1eb;border-radius:10px;overflow:hidden}.fill{height:100%;border-radius:10px;background:var(--green)}.fill.orange{background:var(--orange)}.fill.red{background:var(--red)}
-.alert{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);align-items:flex-start}
-.alert:last-child{border:0}.alert-icon{width:27px;height:27px;border-radius:9px;background:#fff2e7;display:grid;place-items:center}
-.alert b{display:block;font-size:10px}.alert small{color:var(--muted);font-size:9px}
-.delay-number{font-size:30px;font-weight:800;margin:8px 0 2px}.delay-number span{font-size:12px;color:var(--muted);font-weight:500}
-.delay-bar{height:8px;background:#edf1eb;border-radius:10px;margin:14px 0 9px;overflow:hidden}.delay-bar div{height:100%;width:60%;background:var(--orange);border-radius:10px}
-.footer{display:flex;justify-content:space-between;color:#89958f;font-size:9px;margin-top:19px;padding:0 3px}
-select{border:0;background:transparent;color:inherit;font:inherit;outline:0}
-html{-webkit-text-size-adjust:100%}
-.chart-m,.gap-m{display:none}
-@media(min-width:701px){aside{position:sticky;top:0;height:100vh;align-self:start;overflow-y:auto}}
-@media(max-width:1050px){.shell{grid-template-columns:190px 1fr}main{padding:25px 20px}.kpis{grid-template-columns:repeat(2,1fr)}.bottom{grid-template-columns:1fr 1fr}.bottom .mini:last-child{grid-column:span 2}}
-@media(max-width:700px){
-  body{font-size:15px}
-  .shell{display:block}
-  /* header atas: hanya brand */
-  aside{position:sticky;top:0;z-index:30;flex-direction:row;align-items:center;padding:calc(10px + env(safe-area-inset-top)) 16px 10px;border-bottom:1px solid #1f3a37}
-  .brand{padding:0}.logo{width:34px;height:34px;font-size:19px}
-  .nav-label,.side-note,nav a .x{display:none}
-  /* menu jadi tab bar di bawah (gampang dijangkau jempol) */
-  nav{position:fixed;left:0;right:0;bottom:0;z-index:40;display:grid;grid-template-columns:repeat(5,1fr);gap:2px;background:var(--nav);border-top:1px solid #254440;padding:6px 6px calc(6px + env(safe-area-inset-bottom))}
-  nav a{flex-direction:column;justify-content:center;gap:3px;margin:0;padding:8px 2px;font-size:11px;line-height:1.2;text-align:center;border-radius:12px;border-left:0;min-height:52px}
-  nav a.active{border-left:0;padding-left:2px;box-shadow:inset 0 2px 0 var(--lime)}
-  nav a .ic{font-size:19px;width:auto;line-height:1}
-  main{padding:18px 14px calc(96px + env(safe-area-inset-bottom))}
-  /* header halaman */
-  .top{align-items:flex-start;flex-direction:column;gap:14px;margin-bottom:18px}
-  h1{font-size:24px}.sub{font-size:13px}
-  .top-right{width:100%;flex-wrap:wrap}
-  .top-right .pill:first-child{flex:1;min-width:0}
-  .pill{font-size:13px;padding:11px 13px}
-  select{font-size:16px;max-width:100%}
-  /* banner & KPI */
-  .banner{align-items:flex-start;gap:12px;flex-direction:column;padding:17px 18px}
-  .banner strong{font-size:16px}.banner p{font-size:13px}.banner .tag{font-size:11px}
-  .kpis{grid-template-columns:repeat(2,1fr);gap:10px}
-  .kpi{padding:14px}
-  .kpi-top{font-size:12px;align-items:flex-start;gap:8px}.kpi-icon{flex:none}
-  .value{font-size:24px;margin:10px 0 3px}
-  .kpi-foot{font-size:11.5px}
-  /* panel & kartu */
-  .content,.bottom{grid-template-columns:1fr;gap:12px}
-  .bottom .mini:last-child{grid-column:auto}
-  .panel,.mini{padding:16px}
-  .panel-head{flex-direction:column;gap:10px}
-  .panel h2,.mini h2{font-size:15px}
-  .hint,.panel .hint,.mini p{font-size:12px}
-  .legend{font-size:12px}
-  .delay-number{font-size:28px}
-  .delay-number span{font-size:13px}
-  .more{font-size:13px;padding:8px 0}
-  /* grafik */
-  .chart-d{display:none}
-  .chart-m{display:block;height:auto}
-  .chart-m text{font-size:11px}
-  .gap-m{display:flex;justify-content:space-between;align-items:center;gap:10px;background:#f4f7f1;border-radius:12px;padding:12px 14px;margin:6px 0 12px}
-  .gap-m small{display:block;font-size:11px;color:var(--muted);letter-spacing:.8px}
-  .gap-m b{font-size:24px;letter-spacing:-.5px}.gap-m span{font-size:12px;color:var(--muted);text-align:right}
-  /* donut QC */
-  .quality-wrap{gap:14px}.donut{width:120px;height:120px}
-  .qrow{font-size:13px}
-  /* stok & alert */
-  .stock-title{font-size:12px}
-  .alert b{font-size:13px}.alert small{font-size:11.5px}
-  .alert-icon{width:32px;height:32px;flex:none}
-  .footer{flex-direction:column;gap:4px;font-size:11px}
-}
-@media(max-width:380px){.value{font-size:21px}.quality-wrap{flex-direction:column;align-items:flex-start}.donut{align-self:center}.quality-legend{width:100%}}
-@media(prefers-reduced-motion:reduce){.page.active{animation:none}}
-.page{display:none}.page.active{display:block;animation:fade .25s ease}
-@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-.more{display:inline-block;margin-top:12px;color:var(--green);font-weight:700;font-size:11px;text-decoration:none}.more:hover{text-decoration:underline}
-nav a:hover{background:#1b3933;color:#fff}
-.content{align-items:start}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="shell">
@@ -140,11 +12,11 @@ nav a:hover{background:#1b3933;color:#fff}
   <div class="brand"><div class="logo">+</div><div><b>SEHAT FARMA</b><small>INTELLIGENCE HUB</small></div></div>
   <div class="nav-label">WORKSPACE</div>
   <nav>
-    <a class="active" href="#overview"><span class="ic">▦</span><span class="lb">Overview</span></a>
-    <a href="#production"><span class="ic">◷</span><span class="lb">Production</span></a>
-    <a href="#quality"><span class="ic">◇</span><span class="lb">Quality<span class="x"> Control</span></span></a>
-    <a href="#inventory"><span class="ic">▤</span><span class="lb">Inventory</span></a>
-    <a href="#alerts"><span class="ic">⚑</span><span class="lb">Alerts<span class="x"> &amp; Expiry</span></span></a>
+    <a class="active" href="#overview"><span>▦</span> Overview</a>
+    <a href="#production"><span>◷</span> Production</a>
+    <a href="#quality"><span>◇</span> Quality Control</a>
+    <a href="#inventory"><span>▤</span> Inventory</a>
+    <a href="#alerts"><span>⚑</span> Alerts & Expiry</a>
   </nav>
   <div class="side-note"><b>BI INSIGHT</b>Gunakan data produksi, QC, dan persediaan yang terintegrasi untuk mendukung keputusan operasional.</div>
 </aside>
@@ -167,23 +39,15 @@ nav a:hover{background:#1b3933;color:#fff}
 </section></div>
   <div class="page" id="page-production"><section class="content"><div class="card panel">
       <div class="panel-head"><div><h2>Production Achievement</h2><div class="hint">Perbandingan target dan realisasi produksi (unit)</div></div><div class="legend"><span><i style="background:#c9ed75"></i>Target</span><span><i style="background:#0d7564"></i>Aktual</span></div></div>
-      <svg class="chart chart-d" viewBox="0 0 600 210" role="img" aria-label="Grafik target dan aktual produksi">
-        <line class="gridline" x1="55" y1="25" x2="575" y2="25"/><line class="gridline" x1="55" y1="58.75" x2="575" y2="58.75"/><line class="gridline" x1="55" y1="92.5" x2="575" y2="92.5"/><line class="gridline" x1="55" y1="126.25" x2="575" y2="126.25"/><line class="gridline" x1="55" y1="160" x2="575" y2="160"/>
-        <text x="48" y="29" text-anchor="end">100k</text><text x="48" y="62.75" text-anchor="end">75k</text><text x="48" y="96.5" text-anchor="end">50k</text><text x="48" y="130.25" text-anchor="end">25k</text><text x="48" y="164" text-anchor="end">0</text>
+      <svg class="chart" viewBox="0 0 600 210" role="img" aria-label="Grafik target dan aktual produksi">
+        <line class="gridline" x1="55" y1="25" x2="575" y2="25"/><line class="gridline" x1="55" y1="70" x2="575" y2="70"/><line class="gridline" x1="55" y1="115" x2="575" y2="115"/><line class="gridline" x1="55" y1="160" x2="575" y2="160"/>
+        <text x="5" y="29">100k</text><text x="14" y="74">75k</text><text x="14" y="119">50k</text><text x="14" y="164">25k</text>
         <rect x="110" y="25" width="75" height="135" rx="7" fill="#c9ed75"/><rect x="195" y="38.5" width="75" height="121.5" rx="7" fill="#0d7564"/>
         <text x="147" y="181" text-anchor="middle">Target</text><text x="232" y="181" text-anchor="middle">Aktual</text>
         <text x="147" y="15" text-anchor="middle" fill="#71817d">100.000</text><text x="232" y="29" text-anchor="middle" fill="#0d7564">90.000</text>
         <rect x="330" y="48" width="220" height="93" rx="12" fill="#f4f7f1"/>
         <text x="350" y="72" fill="#71817d">GAP PRODUKSI</text><text x="350" y="103" style="font-size:25px;fill:#142b2b;font-weight:800">10.000</text><text x="350" y="123">unit di bawah target</text>
       </svg>
-      <svg class="chart chart-m" viewBox="0 0 340 185" role="img" aria-label="Grafik target dan aktual produksi">
-        <line class="gridline" x1="44" y1="20" x2="336" y2="20"/><line class="gridline" x1="44" y1="52.5" x2="336" y2="52.5"/><line class="gridline" x1="44" y1="85" x2="336" y2="85"/><line class="gridline" x1="44" y1="117.5" x2="336" y2="117.5"/><line class="gridline" x1="44" y1="150" x2="336" y2="150"/>
-        <text x="38" y="24" text-anchor="end">100k</text><text x="38" y="56.5" text-anchor="end">75k</text><text x="38" y="89" text-anchor="end">50k</text><text x="38" y="121.5" text-anchor="end">25k</text><text x="38" y="154" text-anchor="end">0</text>
-        <rect x="88" y="20" width="90" height="130" rx="7" fill="#c9ed75"/><rect x="196" y="33" width="90" height="117" rx="7" fill="#0d7564"/>
-        <text x="133" y="14" text-anchor="middle" fill="#71817d" style="font-weight:700">100.000</text><text x="241" y="29" text-anchor="middle" fill="#0d7564" style="font-weight:700">90.000</text>
-        <text x="133" y="170" text-anchor="middle">Target</text><text x="241" y="170" text-anchor="middle">Aktual</text>
-      </svg>
-      <div class="gap-m"><div><small>GAP PRODUKSI</small><b>10.000</b></div><span>unit di bawah target</span></div>
       <div class="hint">Catatan: data yang tersedia hanya satu periode simulasi, sehingga grafik ini menampilkan target vs aktual, bukan tren bulanan.</div>
     </div>
     <div class="card mini"><h2>Production Delay</h2><p>Indikator keterlambatan proses produksi</p>
@@ -247,33 +111,6 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',
   e.preventDefault();const p=a.getAttribute('href').slice(1);show(p);
   try{history.replaceState(null,'','#'+p)}catch(err){}
 }));
-/* Fallback: browser HP yang dipaksa "Desktop site" (layout ~980px, lalu di-zoom-out).
-   Deteksi layar asli, aktifkan aturan layout HP, lalu perbesar agar pas selebar layar. */
-(function(){
-  var root=document.documentElement;
-  var rules=[];
-  try{
-    Array.prototype.forEach.call(document.styleSheets[0].cssRules,function(r){
-      if(r.type===CSSRule.MEDIA_RULE){
-        var t=r.media.mediaText;
-        rules.push({r:r,orig:t,mobile:/max-width:\s*700px/.test(t),desktop:/min-width:\s*701px/.test(t)});
-      }
-    });
-  }catch(e){return}
-  function apply(){
-    root.style.zoom='';
-    var sw=screen.width, iw=window.innerWidth;
-    var coarse=window.matchMedia&&matchMedia('(pointer:coarse)').matches;
-    var fake=coarse && sw<=600 && iw>sw*1.3;
-    rules.forEach(function(x){
-      x.r.media.mediaText = fake ? (x.mobile?'all':(x.desktop?'not all':x.orig)) : x.orig;
-    });
-    if(fake) root.style.zoom=iw/sw;
-  }
-  apply();
-  window.addEventListener('orientationchange',function(){setTimeout(apply,300)});
-})();
-
 let start='overview';try{start=location.hash.slice(1)}catch(err){}
 show(start);
 </script>
